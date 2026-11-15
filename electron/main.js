@@ -1,6 +1,7 @@
 import { BrowserWindow,app, ipcMain } from "electron";
 import path from "path"
 import { readChromeHistory } from "./database/historyReader.js";
+import { getChromeProfiles, getEdgeProfiles } from "./services/profileService.js";
 
 
 
@@ -47,4 +48,11 @@ ipcMain.handle("history:sync", async ()=>{
             stack:err.stack
         }
     }
+})
+
+ipcMain.handle("get-all-profiles", ()=>{
+    return[
+        ...getChromeProfiles(),
+        ...getEdgeProfiles(),
+    ].sort((a,b)=>a.name.localeCompare(b.name))
 })

@@ -1,6 +1,4 @@
-import { app } from "electron"
 import path from "path"
-import fs from "fs/promises"
 import { openDatabase } from "./connection.js"
 export async function readChromeHistory(){
     let db
@@ -23,7 +21,7 @@ export async function readChromeHistory(){
             `
         )
 
-        console.log(result)
+       // console.log(result)
         return result;
     }catch(err){
         console.log("error occured",err)

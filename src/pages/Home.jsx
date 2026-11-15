@@ -3,7 +3,7 @@ import { homePageSetup } from "../common/staticData";
 import { useEffect, useState } from "react";
 
 const Home = () =>{
-    const [homeData,setHomeData] = useState(homePageSetup?.[0]||null)
+    const [homeData,setHomeData] = useState(homePageSetup?.[Math.floor(Math.random()*homePageSetup.length)]||null)
     useEffect(()=>{
     })
     return(

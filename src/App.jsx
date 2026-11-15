@@ -4,6 +4,7 @@ import Navbar from './components/NavBar'
 import SideBar from './components/SideBar'
 import Home from './pages/Home'
 import History from './pages/History'
+import Profiles from './pages/Profiles'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
       <Routes className='w-[100%] h-[100%]'>
         <Route path='/' element={<Home/>}/>
         <Route path='/history' element={<History/>}/>
+        <Route path='/profiles' element={<Profiles/>}/>
       </Routes>
       </div>
       </div>

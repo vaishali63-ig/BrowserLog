@@ -5,7 +5,9 @@ const History = ()=>{
         const getHistory = async ()=>{
             try{
                const history = await window.electronAPI.syncHistory();
-               console.log("react history:",history)
+               const profiles = await window.electronAPI.getAllProfiles();
+            //    console.log("react history:",history)
+            //    console.log("profiles", profiles)
             }catch(err){
                 console.log("react history error",err)
             }
