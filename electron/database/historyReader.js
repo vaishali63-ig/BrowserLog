@@ -1,23 +1,28 @@
 import path from "path"
 import { openDatabase } from "./connection.js"
-export async function readProfileHistory(profile,searchString,limit,offset){
+export async function readProfileHistory(profile,searchString,startTime,endTime){
     let db
     try {
 
     db = await openDatabase(profile);
 
-        const result = db.exec(
-            `
+    const st = new Date(startTime).getTime()*1000 +11644473600000000;
+    const et = new Date(endTime).getTime()*1000  +11644473600000000;
+
+    const query =  `
             select
             urls.url,
             urls.title,
             urls.last_visit_time,
-            visits.visit_time 
+            visits.visit_time
             from visits join urls on visits.url = urls.id
-            ${searchString?`(Where urls.title LIKE "%${searchString}%" OR urls.url LIKE "%${searchString}%")`:""}
+            Where visits.visit_time between ${st} AND ${et} 
+            ${searchString?`AND (urls.title LIKE "%${searchString}%" OR urls.url LIKE "%${searchString}%")`:""}
             ORDER BY visits.visit_time desc
-            LIMIT ${limit} OFFSET ${offset}
             `
+    console.log(query)
+        const result = db.exec(
+           query
         )
         if (!result||!result[0]) throw("no data found")
         const history = result[0].values.map((r)=>{

@@ -38,8 +38,8 @@ ipcMain.handle("history:sync", async (event,params)=>{
         const history = await readProfileHistory(
              params.profile,
              params.searchString,
-             params.limit,
-             params.offset
+             params.startTime,
+             params.endTime
         );
         return {
             status:"success",
