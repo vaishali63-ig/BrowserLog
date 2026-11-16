@@ -1,6 +1,6 @@
 import { BrowserWindow,app, ipcMain } from "electron";
 import path from "path"
-import { readChromeHistory } from "./database/historyReader.js";
+import { readProfileHistory } from "./database/historyReader.js";
 import { getChromeProfiles, getEdgeProfiles } from "./services/profileService.js";
 
 
@@ -33,9 +33,14 @@ app.on("window-all-closed", ()=>{
     if(process.platform!="darwin") app.quit();
 })
 
-ipcMain.handle("history:sync", async ()=>{
+ipcMain.handle("history:sync", async (event,params)=>{
     try{
-        const history = await readChromeHistory();
+        const history = await readProfileHistory(
+             params.profile,
+             params.searchString,
+             params.limit,
+             params.offset
+        );
         return {
             status:"success",
             data: history

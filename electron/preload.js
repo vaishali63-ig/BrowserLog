@@ -1,7 +1,7 @@
 const { contextBridge, ipcRenderer } = require("electron");
 
 contextBridge.exposeInMainWorld("electronAPI",{
-    syncHistory:()=> ipcRenderer.invoke("history:sync"),
+    readHistory:(params)=> ipcRenderer.invoke("history:sync",params),
     getAllProfiles:()=> ipcRenderer.invoke("get-all-profiles")
 });
 
