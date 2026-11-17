@@ -18,7 +18,7 @@ function createwindow (){
     autoHideMenuBar:true,
   })
 
-  win.webContents.openDevTools()
+  //win.webContents.openDevTools()
 
   if ( app.isPackaged){
      win.loadFile(path.join(app.getAppPath(),"dist","index.html"));
