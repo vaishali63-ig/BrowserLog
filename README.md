@@ -1,16 +1,56 @@
-# React + Vite
+# BrowserLog
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+It is a Windows Tool build with react and electron to view, list and search all browser profiles and their histories
 
-Currently, two official plugins are available:
+It allows you to View and search all profiles and history instead of opening each browser one by one
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **MultiPle Browser:** Currently it supports chrome and edge browser
+- **Profile Management:** You can view and search all profiles here with email and name
+- **History Management:** It allows to search and view history for all profiles instead of opening each one by one
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the Oxlint configuration
+- react.js
+- tailwind css
+- electron
+- sql.js
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Run Locally
+
+clone the repository
+```
+git clone https://github.com/vaishali63-ig/BrowserLog.git
+```
+change directory
+```
+cd BrowserLog
+```
+Install Dependencies
+```
+npm install
+```
+Run in development mode
+```
+npm run electron:dev
+```
+Create Build
+```
+npm run dist
+```
+
+you can find the application setup file inside release folder in root directory named as Browser Log Setup 0.0.1.exe to install application and use it
+
+## Privacy
+
+- No sign in required
+- Not syncing data anywhere
+- Everything is processed locally
+
+## How it works
+
+- Browser log reads data from your local browser files and displays it in the application.
+
+---
+Made for easier history management ❤️  
